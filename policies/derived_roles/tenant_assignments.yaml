@@ -1,0 +1,17 @@
+apiVersion: api.cerbos.dev/v1
+derivedRoles:
+  name: tenant_assignments
+  definitions:
+    - name: customer
+      parentRoles:
+        - user
+      condition:
+        match:
+          expr: R.attr.tenant in P.attr.tenantAssignments.customer
+
+    - name: operations
+      parentRoles:
+        - user
+      condition:
+        match:
+          expr: R.attr.tenant in P.attr.tenantAssignments.operations

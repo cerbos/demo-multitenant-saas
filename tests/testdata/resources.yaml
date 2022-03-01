@@ -1,0 +1,50 @@
+
+resources:
+  regional_apac_thingamabobs_purchase_order:
+    id: regional_apac_thingamabobs
+    kind: purchase_order
+    scope: regional
+    attr:
+      tenant: regional
+      region: apac
+      organizationAssignments:
+        manufacturer:
+          - thingamabob_manufacturers
+
+  regional_emea_widgets_purchase_order:
+    id: regional_emea_widgets
+    kind: purchase_order
+    scope: regional
+    attr:
+      tenant: regional
+      region: emea
+      organizationAssignments:
+        manufacturer:
+          - widget_manufacturers
+
+  vanilla_doohickeys_purchase_order:
+    id: vanilla_doohickeys
+    kind: purchase_order
+    scope: vanilla
+    attr:
+      tenant: vanilla
+
+  vanilla_thingamabobs_purchase_order:
+    id: vanilla_thingamabobs
+    kind: purchase_order
+    scope: vanilla
+    attr:
+      tenant: vanilla
+      organizationAssignments:
+        manufacturer:
+          - thingamabob_manufacturers
+
+  vanilla_widgets_purchase_order:
+    id: vanilla_widgets
+    kind: purchase_order
+    scope: vanilla
+    attr:
+      tenant: vanilla
+      organizationAssignments:
+        manufacturer:
+          - widget_manufacturers

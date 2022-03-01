@@ -1,0 +1,17 @@
+apiVersion: api.cerbos.dev/v1
+resourcePolicy:
+  version: default
+  resource: purchase_order
+  scope: regional
+  importDerivedRoles:
+    - tenant_assignments
+  rules:
+    - actions:
+        - view
+      effect: EFFECT_DENY
+      derivedRoles:
+        - customer
+      condition:
+        match:
+          expr: |-
+            !(R.attr.region in P.attr.regions)

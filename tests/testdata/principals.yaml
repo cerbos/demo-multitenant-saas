@@ -1,0 +1,98 @@
+principals:
+  regional_apac_customer:
+    id: regional_apac_customer
+    roles:
+      - user
+    attr:
+      regions:
+        - apac
+      tenantAssignments:
+        customer:
+          - regional
+
+  regional_emea_customer:
+    id: regional_emea_customer
+    roles:
+      - user
+    attr:
+      regions:
+        - emea
+      tenantAssignments:
+        customer:
+          - regional
+
+  regional_global_customer:
+    id: regional_global_customer
+    roles:
+      - user
+    attr:
+      regions:
+        - apac
+        - emea
+      tenantAssignments:
+        customer:
+          - regional
+
+  regional_operations:
+    id: regional_operations
+    roles:
+      - user
+    attr:
+      tenantAssignments:
+        operations:
+          - regional
+
+  super_operations:
+    id: super_operations
+    roles:
+      - user
+    attr:
+      tenantAssignments:
+        operations:
+          - regional
+          - vanilla
+
+  thingamabob_manufacturer:
+    id: thingamabob_manufacturer
+    roles:
+      - user
+    attr:
+      organizations:
+        - thingamabob_manufacturers
+
+  vanilla_customer:
+    id: vanilla_customer
+    roles:
+      - user
+    attr:
+      tenantAssignments:
+        customer:
+          - vanilla
+
+  vanilla_customer_and_widget_manufacturer:
+    id: vanilla_customer_and_widget_manufacturer
+    roles:
+      - user
+    attr:
+      organizations:
+        - widget_manufacturers
+      tenantAssignments:
+        customer:
+          - vanilla
+
+  vanilla_operations:
+    id: vanilla_operations
+    roles:
+      - user
+    attr:
+      tenantAssignments:
+        operations:
+          - vanilla
+
+  widget_manufacturer:
+    id: widget_manufacturer
+    roles:
+      - user
+    attr:
+      organizations:
+        - widget_manufacturers

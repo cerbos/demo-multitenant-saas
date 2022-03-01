@@ -1,0 +1,10 @@
+apiVersion: api.cerbos.dev/v1
+derivedRoles:
+  name: organization_assignments
+  definitions:
+    - name: manufacturer
+      parentRoles:
+        - user
+      condition:
+        match:
+          expr: hasIntersection(R.attr.organizationAssignments.manufacturer, P.attr.organizations)
