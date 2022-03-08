@@ -9,7 +9,7 @@ compile:
 		--tty \
 		--mount type="bind",source="$(PWD)/policies",target="/policies",readonly \
 		--mount type="bind",source="$(PWD)/tests",target="/tests",readonly \
-		ghcr.io/cerbos/cerbos:dev \
+		ghcr.io/cerbos/cerbos:latest \
 		compile \
 		--tests /tests \
 		/policies
