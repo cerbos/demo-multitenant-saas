@@ -1,8 +1,26 @@
 name: purchase_order
 tests:
-  - name: regional_apac_thingamabobs_purchase_order
+  - name: purchase_order
     input:
-      resource: regional_apac_thingamabobs_purchase_order
+      principals:
+        - regional_apac_customer
+        - regional_emea_customer
+        - regional_global_customer
+        - regional_operations
+        - super_operations
+        - thingamabob_manufacturer
+        - vanilla_customer
+        - vanilla_customer_and_widget_manufacturer
+        - vanilla_operations
+        - widget_manufacturer
+
+      resources:
+        - regional_apac_thingamabobs_purchase_order
+        - regional_emea_widgets_purchase_order
+        - vanilla_doohickeys_purchase_order
+        - vanilla_thingamabobs_purchase_order
+        - vanilla_widgets_purchase_order
+
       actions:
         - prepareForDelivery
         - sendInvoice
@@ -10,336 +28,175 @@ tests:
 
     expected:
       - principal: regional_apac_customer
+        resource: regional_apac_thingamabobs_purchase_order
         actions:
           prepareForDelivery: EFFECT_DENY
           sendInvoice: EFFECT_DENY
           view: EFFECT_ALLOW
 
       - principal: regional_emea_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: regional_global_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_ALLOW
-
-      - principal: regional_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_ALLOW
-          view: EFFECT_ALLOW
-
-      - principal: super_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_ALLOW
-          view: EFFECT_ALLOW
-
-      - principal: thingamabob_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_ALLOW
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_ALLOW
-
-      - principal: vanilla_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: vanilla_customer_and_widget_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: vanilla_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: widget_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-  - name: regional_emea_widgets_purchase_order
-    input:
-      resource: regional_emea_widgets_purchase_order
-      actions:
-        - prepareForDelivery
-        - sendInvoice
-        - view
-
-    expected:
-      - principal: regional_apac_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: regional_emea_customer
+        resource: regional_emea_widgets_purchase_order
         actions:
           prepareForDelivery: EFFECT_DENY
           sendInvoice: EFFECT_DENY
           view: EFFECT_ALLOW
 
       - principal: regional_global_customer
+        resource: regional_apac_thingamabobs_purchase_order
         actions:
           prepareForDelivery: EFFECT_DENY
           sendInvoice: EFFECT_DENY
           view: EFFECT_ALLOW
-
-      - principal: regional_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_ALLOW
-          view: EFFECT_ALLOW
-
-      - principal: super_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_ALLOW
-          view: EFFECT_ALLOW
-
-      - principal: thingamabob_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: vanilla_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: vanilla_customer_and_widget_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_ALLOW
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_ALLOW
-
-      - principal: vanilla_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: widget_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_ALLOW
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_ALLOW
-
-  - name: vanilla_doohickeys_purchase_order
-    input:
-      resource: vanilla_doohickeys_purchase_order
-      actions:
-        - prepareForDelivery
-        - sendInvoice
-        - view
-
-    expected:
-      - principal: regional_apac_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: regional_emea_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
 
       - principal: regional_global_customer
+        resource: regional_emea_widgets_purchase_order
         actions:
           prepareForDelivery: EFFECT_DENY
           sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
+          view: EFFECT_ALLOW
 
       - principal: regional_operations
+        resource: regional_apac_thingamabobs_purchase_order
         actions:
           prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
+          sendInvoice: EFFECT_ALLOW
+          view: EFFECT_ALLOW
+
+      - principal: regional_operations
+        resource: regional_emea_widgets_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_DENY
+          sendInvoice: EFFECT_ALLOW
+          view: EFFECT_ALLOW
 
       - principal: super_operations
+        resource: regional_apac_thingamabobs_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_DENY
+          sendInvoice: EFFECT_ALLOW
+          view: EFFECT_ALLOW
+
+      - principal: super_operations
+        resource: regional_emea_widgets_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_DENY
+          sendInvoice: EFFECT_ALLOW
+          view: EFFECT_ALLOW
+
+      - principal: super_operations
+        resource: vanilla_doohickeys_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_DENY
+          sendInvoice: EFFECT_ALLOW
+          view: EFFECT_ALLOW
+
+      - principal: super_operations
+        resource: vanilla_thingamabobs_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_DENY
+          sendInvoice: EFFECT_ALLOW
+          view: EFFECT_ALLOW
+
+      - principal: super_operations
+        resource: vanilla_widgets_purchase_order
         actions:
           prepareForDelivery: EFFECT_DENY
           sendInvoice: EFFECT_ALLOW
           view: EFFECT_ALLOW
 
       - principal: thingamabob_manufacturer
+        resource: regional_apac_thingamabobs_purchase_order
         actions:
-          prepareForDelivery: EFFECT_DENY
+          prepareForDelivery: EFFECT_ALLOW
           sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: vanilla_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_ALLOW
-
-      - principal: vanilla_customer_and_widget_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_ALLOW
-
-      - principal: vanilla_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_ALLOW
-          view: EFFECT_ALLOW
-
-      - principal: widget_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-  - name: vanilla_thingamabobs_purchase_order
-    input:
-      resource: vanilla_thingamabobs_purchase_order
-      actions:
-        - prepareForDelivery
-        - sendInvoice
-        - view
-
-    expected:
-      - principal: regional_apac_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: regional_emea_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: regional_global_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: regional_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: super_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_ALLOW
           view: EFFECT_ALLOW
 
       - principal: thingamabob_manufacturer
+        resource: vanilla_thingamabobs_purchase_order
         actions:
           prepareForDelivery: EFFECT_ALLOW
           sendInvoice: EFFECT_DENY
           view: EFFECT_ALLOW
 
       - principal: vanilla_customer
+        resource: vanilla_doohickeys_purchase_order
         actions:
           prepareForDelivery: EFFECT_DENY
           sendInvoice: EFFECT_DENY
           view: EFFECT_ALLOW
-
-      - principal: vanilla_customer_and_widget_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_ALLOW
-
-      - principal: vanilla_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_ALLOW
-          view: EFFECT_ALLOW
-
-      - principal: widget_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-  - name: vanilla_widgets_purchase_order
-    input:
-      resource: vanilla_widgets_purchase_order
-      actions:
-        - prepareForDelivery
-        - sendInvoice
-        - view
-
-    expected:
-      - principal: regional_apac_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: regional_emea_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: regional_global_customer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: regional_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
-
-      - principal: super_operations
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_ALLOW
-          view: EFFECT_ALLOW
-
-      - principal: thingamabob_manufacturer
-        actions:
-          prepareForDelivery: EFFECT_DENY
-          sendInvoice: EFFECT_DENY
-          view: EFFECT_DENY
 
       - principal: vanilla_customer
+        resource: vanilla_thingamabobs_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_DENY
+          sendInvoice: EFFECT_DENY
+          view: EFFECT_ALLOW
+
+      - principal: vanilla_customer
+        resource: vanilla_widgets_purchase_order
         actions:
           prepareForDelivery: EFFECT_DENY
           sendInvoice: EFFECT_DENY
           view: EFFECT_ALLOW
 
       - principal: vanilla_customer_and_widget_manufacturer
+        resource: regional_emea_widgets_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_ALLOW
+          sendInvoice: EFFECT_DENY
+          view: EFFECT_ALLOW
+
+      - principal: vanilla_customer_and_widget_manufacturer
+        resource: vanilla_doohickeys_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_DENY
+          sendInvoice: EFFECT_DENY
+          view: EFFECT_ALLOW
+
+      - principal: vanilla_customer_and_widget_manufacturer
+        resource: vanilla_thingamabobs_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_DENY
+          sendInvoice: EFFECT_DENY
+          view: EFFECT_ALLOW
+
+      - principal: vanilla_customer_and_widget_manufacturer
+        resource: vanilla_widgets_purchase_order
         actions:
           prepareForDelivery: EFFECT_ALLOW
           sendInvoice: EFFECT_DENY
           view: EFFECT_ALLOW
 
       - principal: vanilla_operations
+        resource: vanilla_doohickeys_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_DENY
+          sendInvoice: EFFECT_ALLOW
+          view: EFFECT_ALLOW
+
+      - principal: vanilla_operations
+        resource: vanilla_thingamabobs_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_DENY
+          sendInvoice: EFFECT_ALLOW
+          view: EFFECT_ALLOW
+
+      - principal: vanilla_operations
+        resource: vanilla_widgets_purchase_order
         actions:
           prepareForDelivery: EFFECT_DENY
           sendInvoice: EFFECT_ALLOW
           view: EFFECT_ALLOW
 
       - principal: widget_manufacturer
+        resource: regional_emea_widgets_purchase_order
+        actions:
+          prepareForDelivery: EFFECT_ALLOW
+          sendInvoice: EFFECT_DENY
+          view: EFFECT_ALLOW
+
+      - principal: widget_manufacturer
+        resource: vanilla_widgets_purchase_order
         actions:
           prepareForDelivery: EFFECT_ALLOW
           sendInvoice: EFFECT_DENY
